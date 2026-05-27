@@ -3,6 +3,7 @@
 A working demonstration of Azure Integration Services applied to a financial transaction processing scenario.
 
 ## Architecture
+```text
 POST /api/transactions
 │
 ▼
@@ -24,6 +25,7 @@ approved    flagged
 queue      queue
 (Service   (Service
 Bus)       Bus)
+```
 
 ## Tech Stack
 
