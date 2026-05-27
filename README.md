@@ -87,6 +87,7 @@ dotnet test tests/TransactionApi.Tests
 | Clean transaction | None of the above | Approved |
 
 ## Project Structure
+```text
 ├── src/
 │   └── TransactionApi/          # Azure Function App
 │       ├── Functions/           # HTTP triggers
@@ -96,3 +97,4 @@ dotnet test tests/TransactionApi.Tests
 │   └── TransactionApi.Tests/    # xUnit tests
 └── infra/
 └── main.bicep 
+```
