@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "TransactionApi": {
+      "commandName": "Executable",
+      "executablePath": "/opt/homebrew/bin/func",
+      "commandLineArgs": "start --port 7196",
+      "workingDirectory": "$(ProjectDir)"
+    }
+  }
+}

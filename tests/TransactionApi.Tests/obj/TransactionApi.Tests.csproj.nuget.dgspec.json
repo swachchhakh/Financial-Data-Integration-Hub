@@ -1,0 +1,173 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/aftabmirajswachchha/Desktop/financial-integration-hub/tests/TransactionApi.Tests/TransactionApi.Tests.csproj": {}
+  },
+  "projects": {
+    "/Users/aftabmirajswachchha/Desktop/financial-integration-hub/src/TransactionApi/TransactionApi.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/aftabmirajswachchha/Desktop/financial-integration-hub/src/TransactionApi/TransactionApi.csproj",
+        "projectName": "TransactionApi",
+        "projectPath": "/Users/aftabmirajswachchha/Desktop/financial-integration-hub/src/TransactionApi/TransactionApi.csproj",
+        "packagesPath": "/Users/aftabmirajswachchha/.nuget/packages/",
+        "outputPath": "/Users/aftabmirajswachchha/Desktop/financial-integration-hub/src/TransactionApi/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/aftabmirajswachchha/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Azure.Messaging.ServiceBus": {
+              "target": "Package",
+              "version": "[7.20.1, )"
+            },
+            "Microsoft.Azure.Functions.Worker": {
+              "target": "Package",
+              "version": "[2.52.0, )"
+            },
+            "Microsoft.Azure.Functions.Worker.Extensions.Http.AspNetCore": {
+              "target": "Package",
+              "version": "[2.1.0, )"
+            },
+            "Microsoft.Azure.Functions.Worker.Extensions.ServiceBus": {
+              "target": "Package",
+              "version": "[5.24.0, )"
+            },
+            "Microsoft.Azure.Functions.Worker.Sdk": {
+              "target": "Package",
+              "version": "[2.0.7, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.304/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/aftabmirajswachchha/Desktop/financial-integration-hub/tests/TransactionApi.Tests/TransactionApi.Tests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/aftabmirajswachchha/Desktop/financial-integration-hub/tests/TransactionApi.Tests/TransactionApi.Tests.csproj",
+        "projectName": "TransactionApi.Tests",
+        "projectPath": "/Users/aftabmirajswachchha/Desktop/financial-integration-hub/tests/TransactionApi.Tests/TransactionApi.Tests.csproj",
+        "packagesPath": "/Users/aftabmirajswachchha/.nuget/packages/",
+        "outputPath": "/Users/aftabmirajswachchha/Desktop/financial-integration-hub/tests/TransactionApi.Tests/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/aftabmirajswachchha/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "/Users/aftabmirajswachchha/Desktop/financial-integration-hub/src/TransactionApi/TransactionApi.csproj": {
+                "projectPath": "/Users/aftabmirajswachchha/Desktop/financial-integration-hub/src/TransactionApi/TransactionApi.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.12.0, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[6.0.2, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.9.2, )"
+            },
+            "xunit.runner.visualstudio": {
+              "target": "Package",
+              "version": "[2.8.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.304/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
