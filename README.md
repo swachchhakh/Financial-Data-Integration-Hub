@@ -1,30 +1,20 @@
 # Financial Integration Hub
 
-A working demonstration of Azure Integration Services applied to a financial transaction processing scenario.
+A working demonstration of Azure Integration Services applied to financial transaction processing.
 
 ## Architecture
-```text
-POST /api/transactions
-│
-▼
-┌─────────────────┐
-│  Azure Function  │  ← HTTP Trigger (IngestTransaction)
-│  (C# / .NET 9)  │
-└────────┬────────┘
-│
-▼
-┌─────────────────┐
-│  Fraud Check    │  ← FraudCheckService
-│  Service        │    - Amount threshold (>$10,000)
-│                 │    - High-risk MCC codes
-└────────┬────────┘
-│
-┌────┴────┐
-▼         ▼
-approved    flagged
-queue      queue
-(Service   (Service
-Bus)       Bus)
+
+```mermaid
+flowchart TD
+    A[Client] -->|POST /api/transactions| B[IngestTransaction\nAzure Function · HTTP trigger]
+    B --> C[FraudCheckService\nAmount · MCC · Validation]
+    C -->|approved| D[Service Bus\ntransactions-approved]
+    C -->|flagged / rejected| E[Service Bus\ntransactions-review]
+    D --> F[ProcessApproved\nPosts to ledger]
+    E --> G[ProcessReview\nCompliance alert]
+    B -.->|telemetry| H[Application Insights]
+    F -.->|telemetry| H
+    G -.->|telemetry| H
 ```
 
 ## Tech Stack
@@ -32,9 +22,9 @@ Bus)       Bus)
 - **Runtime**: Azure Functions v4, .NET 9 isolated worker
 - **Language**: C#
 - **Messaging**: Azure Service Bus
-- **Observability**: Application Insights (enabled in Azure)
+- **Observability**: Application Insights
 - **IaC**: Bicep
-- **CI/CD**: GitHub Actions
+- **CI/CD**: GitHub Actions (build · test · deploy on push to main)
 - **Tests**: xUnit (9/9 passing)
 
 ## Running Locally
@@ -89,12 +79,28 @@ dotnet test tests/TransactionApi.Tests
 ## Project Structure
 ```text
 ├── src/
-│   └── TransactionApi/          # Azure Function App
-│       ├── Functions/           # HTTP triggers
-│       ├── Models/              # Transaction, TransactionResult
-│       └── Services/            # FraudCheckService
+│   └── TransactionApi/
+│       ├── Functions/
+│       │   ├── IngestTransaction.cs   # HTTP trigger
+│       │   └── ProcessTransaction.cs  # Service Bus consumers
+│       ├── Models/
+│       │   └── Transaction.cs
+│       └── Services/
+│           ├── FraudCheckService.cs
+│           └── ServiceBusRouter.cs
 ├── tests/
-│   └── TransactionApi.Tests/    # xUnit tests
-└── infra/
-└── main.bicep 
+│   └── TransactionApi.Tests/
+│       └── FraudCheckServiceTests.cs  # 9/9 passing
+├── infra/
+│   └── main.bicep                     # Azure infrastructure
+└── .github/
+└── workflows/
+└── deploy.yml                 # CI/CD pipeline
+
+
 ```
+
+## Live Endpoint
+
+Deployed to Azure Functions (Australia East) with Application Insights telemetry and Service Bus routing.
+
