@@ -8,13 +8,12 @@ var builder = FunctionsApplication.CreateBuilder(args);
 
 builder.ConfigureFunctionsWebApplication();
 
-builder.Services.AddSingleton(sp =>
+var serviceBusConn = Environment.GetEnvironmentVariable("ServiceBusConnection");
+if (!string.IsNullOrEmpty(serviceBusConn))
 {
-    var connStr = Environment.GetEnvironmentVariable("ServiceBusConnection");
-    return string.IsNullOrEmpty(connStr)
-        ? null!
-        : new ServiceBusClient(connStr);
-});
+    builder.Services.AddSingleton(new ServiceBusClient(serviceBusConn));
+    builder.Services.AddSingleton<ServiceBusRouter>();
+}
 
 builder.Services.AddSingleton<FraudCheckService>();
 

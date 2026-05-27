@@ -10,7 +10,8 @@ namespace TransactionApi.Functions;
 
 public class IngestTransaction(
     ILogger<IngestTransaction> logger,
-    FraudCheckService fraudCheck)
+    FraudCheckService fraudCheck,
+    ServiceBusRouter? router = null)
 {
     [Function("IngestTransaction")]
     public async Task<HttpResponseData> Run(
@@ -32,7 +33,10 @@ public class IngestTransaction(
 
         var checkResult = fraudCheck.Check(transaction);
 
-        logger.LogInformation("Transaction {Id} result: {Status}", transaction.Id, checkResult.Status);
+        if (router is not null)
+            await router.RouteAsync(transaction, checkResult);
+        else
+            logger.LogWarning("Service Bus not configured — skipping routing for transaction {Id}", transaction.Id);
 
         var response = req.CreateResponse(HttpStatusCode.Accepted);
         await response.WriteAsJsonAsync(checkResult);

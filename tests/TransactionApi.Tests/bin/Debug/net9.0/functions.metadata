@@ -25,5 +25,49 @@
         "direction": "Out"
       }
     ]
+  },
+  {
+    "name": "ProcessApproved",
+    "scriptFile": "TransactionApi.dll",
+    "entryPoint": "TransactionApi.Functions.ProcessTransaction.RunApproved",
+    "language": "dotnet-isolated",
+    "properties": {
+      "IsCodeless": false
+    },
+    "bindings": [
+      {
+        "name": "message",
+        "direction": "In",
+        "type": "serviceBusTrigger",
+        "queueName": "transactions-approved",
+        "connection": "ServiceBusConnection",
+        "cardinality": "One",
+        "properties": {
+          "supportsDeferredBinding": "True"
+        }
+      }
+    ]
+  },
+  {
+    "name": "ProcessReview",
+    "scriptFile": "TransactionApi.dll",
+    "entryPoint": "TransactionApi.Functions.ProcessTransaction.RunReview",
+    "language": "dotnet-isolated",
+    "properties": {
+      "IsCodeless": false
+    },
+    "bindings": [
+      {
+        "name": "message",
+        "direction": "In",
+        "type": "serviceBusTrigger",
+        "queueName": "transactions-review",
+        "connection": "ServiceBusConnection",
+        "cardinality": "One",
+        "properties": {
+          "supportsDeferredBinding": "True"
+        }
+      }
+    ]
   }
 ]
